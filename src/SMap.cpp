@@ -3,15 +3,15 @@
 #include "LUTs.hpp"
 #include "runstats.hpp"
 #include "verbose.hpp"
+#include "option.hpp"
 
 using namespace std;
 
-extern bool opt_debug;
 /*
  * Constructors and such
  */
 SMap::SMap(const STable table)
-{    if (opt_debug) cerr << "SMap from STable at " << this << " allocated\n";
+{    if (main_opt::debug) cerr << "SMap from STable at " << this << " allocated\n";
 
 
     for (int i = 0; i < 9; i++) {
@@ -78,7 +78,7 @@ SMap::SMap(const STable table)
 }
 
 SMap::SMap(const SMap& smp)
-{    if (opt_debug) cerr << "SMap from SMap at " << this << " allocated\n";
+{    if (main_opt::debug) cerr << "SMap from SMap at " << this << " allocated\n";
 
     // violation of the rules sets this to true
     hash_value = smp.hash_value;
@@ -114,13 +114,13 @@ SMap& SMap::operator=(SMap mp)
 {
     assert(false);    // not used
     auto new_map = std::make_unique<SMap>(mp);
-    if (opt_debug) cerr << "SMap with = at " << this << " allocated\n";
+    if (main_opt::debug) cerr << "SMap with = at " << this << " allocated\n";
     return *std::move(new_map);
 }
 
 SMap::~SMap()
 {
-    if (opt_debug) cerr << "SMap at " << this << " deleted\n";
+    if (main_opt::debug) cerr << "SMap at " << this << " deleted\n";
 }
 
 ///////////
@@ -166,7 +166,7 @@ bool SMap::apply_rules()
         // jumps here if somethings has changed
         violation_check:
         if (!violation_free()) {
-            if (Verbose::on) print();
+            if (main_opt::verbose) print();
             return false;
         }
     }
@@ -381,7 +381,7 @@ bool SMap::violation_free()
 {
     for (int i = 0; i < 81; i++)
         if (!fields[i] && !blank[i]) {
-            if (Verbose::on) {
+            if (main_opt::verbose) {
                 
                 cout << Verbose::coordinates(i) <<  " is dead:" << endl;
             }

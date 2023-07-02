@@ -21,7 +21,7 @@ private:
     std::list<STable> solution_tables;
 
     // if this is set to true it will search for more than one solution
-    bool solve_extensively = false;
+    static bool solve_extensively;
 
 public:
 
@@ -43,9 +43,9 @@ public:
 
     // switch to extensive brute force search
     // finds all possible solutions
-    void solve_ext(bool ext)
+    static void solve_ext()
     {
-        solve_extensively = ext;
+        solve_extensively = true;
     }
 
     // check if file could be loaded

@@ -1,5 +1,6 @@
 #include "Straight.hpp"
 #include "verbose.hpp"
+#include "option.hpp"
 
 using namespace std;
 
@@ -135,7 +136,7 @@ bool Straight::range_violation()
 
 void Straight::range_violation_verbose() const {
     
-    if (!Verbose::on) return;
+    if (not main_opt::verbose) return;
     
     std::string straight = "";
     if ( incr == 1 ) {

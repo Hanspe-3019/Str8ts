@@ -9,7 +9,6 @@
 
 struct Verbose {
     
-    static bool on;
     constexpr static char ROWS[] = "ABCDEFGHJ";
     constexpr static char COLS[] = "123456789";
     static char row_as_char(const int row_num);

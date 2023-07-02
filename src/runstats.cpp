@@ -3,9 +3,8 @@
 #include <iostream>
 #include <iomanip>
 
-extern bool opt_debug;
 namespace {
-// Runstats soll auf diese Weise ein Singleton sein
+// Here is the only one single instanstance of Runstats:
 Runstats runstats;
 }
 Node::Node(std::string name, Node * parent) :
@@ -13,7 +12,7 @@ Node::Node(std::string name, Node * parent) :
 }
 
 Node::~Node() {
-    if (opt_debug) {
+    if (main_opt::debug) {
         std::cerr << "deleting Node at " << this << " - " << name  << '\n';
     }
 }

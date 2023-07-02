@@ -8,8 +8,7 @@
 
 #include <string>
 #include <memory>
-
-extern bool opt_trace;
+#include "option.hpp"
 
 struct Node {
     friend class Runstats;
@@ -36,11 +35,11 @@ public:
 
 struct StartStop {
     StartStop(const std::string name) {
-        if (opt_trace) Runstats::start(name);
+        if (main_opt::trace) Runstats::start(name);
     }
     ~StartStop() {
         // This code will run when object goes out of scope
-        if (opt_trace) Runstats::stop();
+        if (main_opt::trace) Runstats::stop();
     }
 };
 

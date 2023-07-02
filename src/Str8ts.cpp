@@ -4,11 +4,10 @@
 
 using namespace std;
 
+bool Str8ts::solve_extensively;
+
 Str8ts::Str8ts(string filename) : table(filename), map(table)
 {
-    extern bool opt_all;
-    solve_extensively = opt_all;
-    ;
 }
 
 bool Str8ts::solve()
@@ -33,7 +32,7 @@ bool Str8ts::solve(SMap* st_instance)
         // if not solved yet call this function recursively with guessed numbers
         if(!st_instance->solved()) {
             
-            if (Verbose::on) {
+            if (main_opt::verbose) {
                 st_instance->print();
                 cout << "\nGuessing..." << endl;
             }
@@ -41,7 +40,7 @@ bool Str8ts::solve(SMap* st_instance)
             auto sub_t_instances = st_instance->choose();
             bool solved = false;
             for (auto && st_inst : sub_t_instances) {
-                if (Verbose::on) {
+                if (main_opt::verbose) {
                     string guess = " trying ";
                     for (int i = 0; i < 81; i++) {
                         
