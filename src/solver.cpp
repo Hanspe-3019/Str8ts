@@ -20,24 +20,29 @@ int main(int argc, char * argv[])
     
     // loop over all input problems
     auto problems_given = 0;
-    for (int j = 1; j < argc; j++) {
-
-        const string file = argv[j];
-        
-        if ( main_opt::process_options(file) ) continue;
-        
-        cout << "Loading " << file << endl;
-        problems_given += 1;
-
-        Str8ts puzzle(file);
-
-        if (puzzle.loaded()) {
+    try {
+        for (int j = 1; j < argc; j++) {
             
-            solve_it(puzzle);
+            const string file = argv[j];
+            
+            if ( main_opt::process_options(file) ) continue;
+            
+            cout << "Loading " << file << endl;
+            problems_given += 1;
+            
+            Str8ts puzzle(file);
+            
+            if (puzzle.loaded()) {
+                
+                solve_it(puzzle);
+            }
+            else {
+                cout << "Couldn't load problem.\n";
+            }
         }
-        else {
-            cout << "Couldn't load problem.\n";
-        }
+    } catch (const std::string & msg) {
+        assert (msg == "help");
+        return 0;
     }
     if ( not problems_given) {
         Str8ts puzzle {"-i"}; // interactive mode ncurses

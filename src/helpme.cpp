@@ -54,6 +54,7 @@ void givehelp(void) {
         std::cerr << indent << line << '\n';
         
     }
+    throw std::string {"help"};
     
 }
 
