@@ -142,18 +142,18 @@ void Straight::range_violation_verbose() const {
     if ( incr == 1 ) {
         // row
         const int col = starts_at % 9;
-        straight += Verbose::ROWS[starts_at/9];
+        straight += verbose::ROWS[starts_at/9];
         for ( int i = col; i < col + length; i += 1 ) {
-            straight += Verbose::COLS[i];
+            straight += verbose::COLS[i];
         }
         
     } else {
         // col
         const int row = starts_at / 9;
         for ( int i = row; i < row + length; i += 1 ) {
-            straight += Verbose::ROWS[i];
+            straight += verbose::ROWS[i];
         }
-        straight += Verbose::COLS[starts_at%9];
+        straight += verbose::COLS[starts_at%9];
     }
     
     std::cout << "range violation in " << straight << ":\n";

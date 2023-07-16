@@ -110,14 +110,6 @@ SMap::SMap(const SMap& smp)
     }
 }
 
-SMap& SMap::operator=(SMap mp)
-{
-    assert(false);    // not used
-    auto new_map = std::make_unique<SMap>(mp);
-    if (main_opt::debug) cerr << "SMap with = at " << this << " allocated\n";
-    return *std::move(new_map);
-}
-
 SMap::~SMap()
 {
     if (main_opt::debug) cerr << "SMap at " << this << " deleted\n";
@@ -383,7 +375,7 @@ bool SMap::violation_free()
         if (!fields[i] && !blank[i]) {
             if (main_opt::verbose) {
                 
-                cout << Verbose::coordinates(i) <<  " is dead:" << endl;
+                cout << verbose::coordinates(i) <<  " is dead:" << endl;
             }
             return false;
         }

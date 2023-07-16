@@ -11,7 +11,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O3")
 
 add_executable(solver "src/solver.cpp")
 
-add_library(Str8tsLib "src/Str8ts.cpp" "src/SMap.cpp" "src/STable.cpp" "src/Straight.cpp" "src/LUTs.cpp" "src/runstats.cpp" "src/verbose.cpp" "src/prompt.cpp" "src/helpme.cpp" "src/option.cpp")
+add_library(Str8tsLib "src/Str8ts.cpp" "src/SMap.cpp" "src/STable.cpp" "src/Straight.cpp" "src/LUTs.cpp" "src/runstats.cpp" "src/verbose.cpp" "src/prompt.cpp" "src/helpme.cpp" "src/option.cpp" "src/str8tscurses.cpp")
 
 find_library(LIBRARY_NCURSES  ncurses)
 

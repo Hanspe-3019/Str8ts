@@ -46,7 +46,7 @@ bool Str8ts::solve(SMap* st_instance)
                         
                         if (st_inst->fields[i] == st_instance->fields[i]) continue;
                         guess += '0' + ffs(st_inst->fields[i]);
-                        guess += " at " + Verbose::coordinates(i);
+                        guess += " at " + verbose::coordinates(i);
                         cout << guess << endl;
                         break;
                     }

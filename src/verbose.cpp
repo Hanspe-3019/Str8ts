@@ -6,10 +6,10 @@
 #include "verbose.hpp"
 
 
-std::string Verbose::coordinates(const int i) {
-    return { Verbose::ROWS[i/9], Verbose::COLS[i%9] };
+std::string verbose::coordinates(const int i) {
+    return { verbose::ROWS[i/9], verbose::COLS[i%9] };
 }
 
-char Verbose::row_as_char(const int i) {
-    return Verbose::ROWS[i];
+char verbose::row_as_char(const int i) {
+    return verbose::ROWS[i];
 }

@@ -12,7 +12,11 @@ STable::STable(string filename)
     string puzzle_str {};
     puzzle_str.reserve(100); // 9*9 plus some white space chars should suffice.
     if (filename == "-i") {
-        prompt_puzzle(puzzle_str);
+        try {
+            prompt_puzzle(puzzle_str);
+        } catch (string){
+            loaded = false;
+        }
         
     } else if (filename == "-") {
         getline(cin, puzzle_str, '\0');

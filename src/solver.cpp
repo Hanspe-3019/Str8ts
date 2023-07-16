@@ -46,7 +46,9 @@ int main(int argc, char * argv[])
     }
     if ( not problems_given) {
         Str8ts puzzle {"-i"}; // interactive mode ncurses
-        solve_it(puzzle);
+        if (puzzle.loaded()) {
+            solve_it(puzzle);
+        }
     }
     if ( main_opt::trace ) {
         Runstats::print_stats();
